@@ -1,0 +1,198 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
+/*main menu*/
+#mainMenu{
+    position: fixed;
+    height: 100%;
+    width: 50px;
+    background-color: #3177ca;
+    z-index: 51;
+    overflow: hidden;
+}
+
+.openMainMenu{
+    padding: 5px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    float: left;
+    color: #fff;
+    background-color: rgb(29,71,120);
+    margin: 3px 3px 0 0;
+    float: right;
+    cursor: pointer;
+    width: 30px;
+    height: 28px;
+}
+
+.menuBar1, .menuBar2, .menuBar3 {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    margin: 5px 0px;
+    transition: 0.4s;
+}
+
+.change .menuBar1{
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-5px, 5px) ;
+}
+
+.change .menuBar2{opacity: 0;}
+
+.change .menuBar3{
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-7px, -8px) ;
+}
+
+.closeMenuBcgr{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; 
+}
+
+.mainMenuContent{
+    position: absolute;
+    left: 0;
+    right: 44px;
+    bottom: 0;
+    top: 65px;
+}
+
+.menuCalendar{
+    width: 97%;
+    height: 220px;
+    margin: 0 auto;
+}
+
+/*#mainMenu .ui-datepicker{
+    position: absolute;
+    right: 44px;
+}*/
+
+/*End of main menu*/
+
+.pageContainer{
+    position: absolute;
+    left: 50px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.pageContent{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.selectedWeekInfomations{
+    padding-top: 20px;
+}
+
+.selectedWeekInfomations:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#selectedWeekInfo{
+    float: left;
+    font-size: 18px;
+    padding-right: 20px;
+}
+
+#selectedWeekApoint{
+    float: left;
+}
+
+.calendarSummary{
+    margin-top: 35px;
+    margin-left: 20px;
+}
+
+.btnViewGroup{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    /*cursor: pointer;*/
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 14px;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btnViewGroup a{
+    color: #fff;
+    background-color: #3dbe8b;
+    border: none;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+    text-decoration: none;
+    height: 20px;
+    line-height: 20px;
+    width: 60px;
+}
+
+#viewWeekBtn{
+    border-radius: 0;
+}
+
+#viewTodayBtn{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#viewMonthBtn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn.active{
+    background-color: #247153;
+}
+
+.btn:active,
+.btn:hover{
+    background-color: #43c390;
+}
+
+.btn.active:hover{
+    background-color: #247153;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
+#previousDWM,
+#nextDWM{
+    background-color: #f6f6f6;
+    color: #192637;
+    height: 20px;
+    line-height: 20px;
+    width: 20px;
+}

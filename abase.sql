@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2018 at 06:39 PM
+-- Generation Time: Feb 23, 2018 at 12:41 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.0.27
 
@@ -29,13 +29,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appointment` (
-  `user_id` int(11) NOT NULL,
-  `client_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id_fk` int(11) NOT NULL,
+  `client_id_fk` int(11) NOT NULL,
   `date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`id`, `user_id_fk`, `client_id_fk`, `date`, `start_time`, `end_time`, `type`) VALUES
+(1, 1, 1, '2018-02-28', '10:30:00', '11:00:00', 1),
+(2, 1, 2, '2018-02-27', '11:00:00', '11:30:00', 2),
+(3, 2, 2, '2018-02-09', '12:15:00', '13:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -52,6 +62,14 @@ CREATE TABLE `client` (
   `notes` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`id`, `first_name`, `last_name`, `phone`, `email`, `notes`) VALUES
+(1, 'milos', 'bajic', '325444', 'bajic_kg@live.com', 'Odlican covek. Sve najbolje!'),
+(2, 'jovana', 'vucicevic', '333555', 'jovo@live.com', 'Koleginica; dobar lik.');
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +84,14 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`) VALUES
+(1, 'Desanka', 'Milivojevic', 'milovjevicD@outlook.com'),
+(2, 'Joakim', 'Vujic', 'joakimVuu@gmail.com');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -73,8 +99,9 @@ CREATE TABLE `user` (
 -- Indexes for table `appointment`
 --
 ALTER TABLE `appointment`
-  ADD PRIMARY KEY (`user_id`,`client_id`),
-  ADD KEY `client_fk` (`client_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client_fk` (`client_id_fk`),
+  ADD KEY `user_fk` (`user_id_fk`);
 
 --
 -- Indexes for table `client`
@@ -93,10 +120,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `client`
+--
+ALTER TABLE `client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -106,8 +145,8 @@ ALTER TABLE `user`
 -- Constraints for table `appointment`
 --
 ALTER TABLE `appointment`
-  ADD CONSTRAINT `client_fk` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `client_fk` FOREIGN KEY (`client_id_fk`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_fk` FOREIGN KEY (`user_id_fk`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

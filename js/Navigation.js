@@ -1,20 +1,18 @@
-ABglobal = {};
-ABglobal.navigation = {};
-
 ABglobal.navigation.mainMenuOpened = false;
 
-$('.openMainMenu').on('click', function(){ABglobal.navigation.openSlidingMenu(); toogleMainMenu(this);});
-//$('.closeMenuBcgr').on('click', function(){ABglobal.navigation.closeSlidingMenu(); toogleMainMenu(this);});
-//toogleMainMenu(this);
+$('.openMainMenu').on('click', function(){ABglobal.navigation.openSlidingMenu(); ABglobal.navigation.toogleMainMenu(this);});
+$('.closeMenuBcgr').on('click', function(){ABglobal.navigation.closeSlidingMenu();});
 
 ABglobal.navigation.openSlidingMenu = function(){
     
     if(ABglobal.navigation.mainMenuOpened == false){
-    $('#mainMenu').animate({'width': '300px'},600);
-    $('.mainMenuContent').animate({'right': '0'},400);
-    $('.closeMenuBcgr').show();
-    
-    ABglobal.navigation.mainMenuOpened = true;
+        $('.mainMenuContent').hide();
+        $('#mainMenu').animate({'width': '300px'},300, function(){
+            $('.mainMenuContent').show();
+        });
+        $('.closeMenuBcgr').show();
+
+        ABglobal.navigation.mainMenuOpened = true;
     }
     else{
         ABglobal.navigation.closeSlidingMenu();
@@ -22,17 +20,20 @@ ABglobal.navigation.openSlidingMenu = function(){
 };
 
 ABglobal.navigation.closeSlidingMenu = function(){
-    $('#mainMenu').animate({'width': '50px'},600);
-    $('.mainMenuContent').animate({'right': '44px'},400);
+    $('.mainMenuContent').hide();
+    $('#mainMenu').animate({'width': '50px'},300);
     $('.closeMenuBcgr').hide();
     
     ABglobal.navigation.mainMenuOpened = false;
 };
 
-function toogleMainMenu(x) {
+ABglobal.navigation.toogleMainMenu = function(x) {
     x.classList.toggle("change");
-}
+};
 
 $( function() {
-    $( "#datepicker" ).datepicker();
+    $( "#menuCalendar" ).datepicker({
+        firstDay: 1,
+        changeMonth: true
+    });
   } );

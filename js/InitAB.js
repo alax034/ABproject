@@ -1,0 +1,3 @@
+ABglobal = {};
+ABglobal.navigation = {};
+

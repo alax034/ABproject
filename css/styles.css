@@ -65,21 +65,58 @@ body {
 .mainMenuContent{
     position: absolute;
     left: 0;
-    right: 44px;
+    right: 0;
     bottom: 0;
     top: 65px;
+    display: none;
 }
 
+/*Menu calendar*/
 .menuCalendar{
     width: 97%;
     height: 220px;
     margin: 0 auto;
 }
 
-/*#mainMenu .ui-datepicker{
-    position: absolute;
-    right: 44px;
-}*/
+#menuCalendar .ui-datepicker td span, 
+#menuCalendar .ui-datepicker td a{
+    text-align: center;
+    color: #fff;
+}
+
+#menuCalendar .ui-datepicker .ui-datepicker-title{
+    color: #fff;
+}
+
+#menuCalendar .ui-datepicker th{
+    color: #fff;
+}
+
+#menuCalendar .ui-state-active, 
+#menuCalendar .ui-widget-content .ui-state-active, 
+#menuCalendar .ui-widget-header .ui-state-active, 
+#menuCalendar a.ui-button:active, 
+#menuCalendar .ui-button:active, 
+#menuCalendar .ui-button.ui-state-active:hover{
+
+}
+
+#menuCalendar .ui-state-highlight, 
+#menuCalendar .ui-widget-content .ui-state-highlight, 
+#menuCalendar .ui-widget-header .ui-state-highlight{
+    -webkit-box-shadow: inset 0 -2px 0 #fff, inset 0 2px 0 #fff, inset 2px 0 0 #fff, inset -2px 0 0 #fff;
+    box-shadow: inset 0 -2px 0 #fff, inset 0 2px 0 #fff, inset 2px 0 0 #fff, inset -2px 0 0 #fff;
+}
+
+#menuCalendar .ui-state-hover, 
+#menuCalendar .ui-widget-content .ui-state-hover, 
+#menuCalendar .ui-widget-header .ui-state-hover, 
+#menuCalendar .ui-state-focus, 
+#menuCalendar .ui-widget-content .ui-state-focus, 
+#menuCalendar .ui-widget-header .ui-state-focus, 
+#menuCalendar .ui-button:hover, .ui-button:focus{
+        background: #3dbe8b;
+}
 
 /*End of main menu*/
 
